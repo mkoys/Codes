@@ -30,7 +30,7 @@ function handleKeyboard(event) {
         // Increment carrot column
         carrot.column++;
         // Update current line in view
-        view.updateLine(carrot.line, [{text: editor.content[carrot.line]}]);
+        view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
     }
 
     // On space key press
@@ -40,7 +40,7 @@ function handleKeyboard(event) {
         // Increment carrot column
         carrot.column++;
         // Update current line in view
-        view.updateLine(carrot.line, [{text: editor.content[carrot.line]}]);
+        view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
     }
 
     // On remove key press
@@ -52,15 +52,19 @@ function handleKeyboard(event) {
             carrot.column = editor.lineLength(carrot.line - 1);
             // Remove line from editor
             editor.removeLine(carrot.line);
+            // Remove line from view
+            view.removeLine(carrot.line);
             // Decrement carrot line
             carrot.line--;
+            // Update line in view and add right content to it
+            view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
         } else {
             // Remove one character on current line and column
             editor.removeContent(carrot.line, carrot.column, 1);
             // Decrement column
             carrot.column--;
             // Update current line in view
-            view.updateLine(carrot.line, [{text: editor.content[carrot.line]}]);
+            view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
         }
     }
 
@@ -68,10 +72,14 @@ function handleKeyboard(event) {
     if (newLineKey) {
         // Append line on carrot line and column
         editor.appendLine(carrot.line, carrot.column);
+        // Update current line in view
+        view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
         // Inciment carrot line
         carrot.line++;
         // Reset carrot column
         carrot.column = 0;
+        // Append the new line into view
+        view.appendLine(carrot.line, [{ text: editor.content[carrot.line] }]);
     }
 
     console.log(editor.content, carrot);
