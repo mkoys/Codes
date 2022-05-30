@@ -13,6 +13,7 @@ const carrot  = new Carrot();
 // Handles keyboard input
 function handleKeyboard(event) {
     const spaceKey = event.keyCode == 32; // Space key
+    const removeKey = event.keyCode == 8; // Remove key
 
     const aplhaNumKeys = event.keyCode > 47 && event.keyCode < 91; // AplhaNumeric key
     const numericKeys = event.keyCode > 95 && event.keyCode < 112; // Numberic key
@@ -33,6 +34,17 @@ function handleKeyboard(event) {
         editor.addContent(carrot.line, carrot.column, "\xa0");
         // Increment carrot column
         carrot.column++;
+    }
+
+    // On remove key press
+    if(removeKey) {
+        if(!carrot.column) {
+            editor.removeLine(carrot.line);
+            editor.line--;
+        }else {
+            editor.removeContent(carrot.line, carrot.column, 1);
+            carrot.column--;
+        }
     }
 
     console.log(editor.content);
