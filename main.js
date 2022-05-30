@@ -1,6 +1,7 @@
 // Import classes
 import Editor from "./Editor.js";
 import Carrot from "./Carrot.js";
+import View from "./View.js";
 
 // Create keydown event listener and pass it to handler
 document.addEventListener("keydown", event => handleKeyboard(event));
@@ -9,6 +10,7 @@ document.addEventListener("keydown", event => handleKeyboard(event));
 const editor = new Editor();
 // Create new carrot with default postion
 const carrot = new Carrot();
+const view = new View(document.querySelector("main"));
 
 // Handles keyboard input
 function handleKeyboard(event) {
@@ -27,6 +29,8 @@ function handleKeyboard(event) {
         editor.addContent(carrot.line, carrot.column, event.key);
         // Increment carrot column
         carrot.column++;
+        // Update current line in view
+        view.updateLine(carrot.line, [{text: editor.content[carrot.line]}]);
     }
 
     // On space key press
@@ -35,6 +39,8 @@ function handleKeyboard(event) {
         editor.addContent(carrot.line, carrot.column, "\xa0");
         // Increment carrot column
         carrot.column++;
+        // Update current line in view
+        view.updateLine(carrot.line, [{text: editor.content[carrot.line]}]);
     }
 
     // On remove key press
@@ -53,13 +59,18 @@ function handleKeyboard(event) {
             editor.removeContent(carrot.line, carrot.column, 1);
             // Decrement column
             carrot.column--;
+            // Update current line in view
+            view.updateLine(carrot.line, [{text: editor.content[carrot.line]}]);
         }
     }
 
     // On new line key press
     if (newLineKey) {
+        // Append line on carrot line and column
         editor.appendLine(carrot.line, carrot.column);
+        // Inciment carrot line
         carrot.line++;
+        // Reset carrot column
         carrot.column = 0;
     }
 
