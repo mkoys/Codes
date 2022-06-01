@@ -1,3 +1,5 @@
+// Import scheme
+import scheme from "./syntax/javascript.js";
 // Import Core
 import {
     view,
@@ -12,20 +14,13 @@ import {
     moveUp
 } from "./main.js";
 
+// Set scheme in core
+setScheme(scheme);
 // Create new carrot
 const carrot = createCarrot();
-// Generate scheme for syntax Highlighting
-const scheme = {
-    default: /(?<let>\blet\b)|(?<const>\bconst\b)|(?<operator>\-\=|\+\=|\-|\+|\\|\/|\%)|(?<signs>\=|\,)|(?<number>\b[0-9]+\b)|(?<func>\bfunction\b\s+\w+(\s+|)\(.*\))|(?<function>\bfunction\b)/gm,
-    func: /(?<function>\bfunction\b)|(?<params>\(.*\))|(?<functionName>\w)/gm,
-    params: /(?<bracket>\(|\))|(?<default>.*)/gm
-}
-
 // Set font width and height
 view.fontHeight = 26;
 view.fontWidth = 13.2;
-// Set scheme in core
-setScheme(scheme);
 
 // Create keydown event listener and pass it to handler
 document.addEventListener("keydown", event => handleKeyboard(event));
