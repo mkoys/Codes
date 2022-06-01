@@ -27,7 +27,7 @@ function handleKeyboard(event) {
 
     // Scheme for syntax Highlighting
     const scheme = {
-        default: /(?<let>\blet\b)|(?<const>\bconst\b)/gm,
+        default: /(?<let>\blet\b)|(?<const>\bconst\b)|(?<operator>\-\=|\+\=|\-|\+|\\|\/|\%)|(?<signs>\=|\;|\,)|(?<number>\b[0-9]*\b)/gm,
     }
 
     // On basic key press

@@ -23,9 +23,21 @@ main {
 }
 
 .let {
-    color: red;
+    color: hotpink;
 }
 
 .const {
-    color: lightskyblue;
+    color: pink;
+}
+
+.operator {
+    color: yellow;
+}
+
+.signs {
+    color: aqua;
+}
+
+.number {
+    color: orangered;
 }

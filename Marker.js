@@ -42,7 +42,6 @@ export default class Marker {
             }
 
             // Push found match by its index and length from index
-            console.log(match.groups);
             result.push({
                 type: groupKeys[groupIndex],
                 text: content.slice(match.index, match.index + match[0].length)
