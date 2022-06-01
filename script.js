@@ -46,12 +46,12 @@ function handleKeyboard(event) {
     const specialKeys = event.keyCode > 183 && event.keyCode < 224; // Spcial character key
     const basicKeys = aplhaNumKeys || numericKeys || specialKeys; // Basic typing keys together
 
-    if (spaceKey) { addContent("\xa0", carrot) }
-    if (basicKeys) { addContent(event.key, carrot) }
-    if (removeKey) { removeContent(carrot) }
-    if (newLineKey) { newLine(carrot) }
-    if (rightKey) { moveRight(carrot) }
-    if (leftKey) { moveLeft(carrot) }
-    if (downKey) { moveDown(carrot) }
-    if (upKey) { moveUp(carrot) }
+    if (spaceKey) { addContent("\xa0", carrot) } // On space keypress
+    if (basicKeys) { addContent(event.key, carrot) } // On basic input keypress
+    if (removeKey) { removeContent(carrot) } // On backspace keypress
+    if (newLineKey) { newLine(carrot) } // On enter keypress
+    if (rightKey) { moveRight(carrot) } // On right arrow keypress
+    if (downKey) { moveDown(carrot) } // On down arrow keypress
+    if (leftKey) { moveLeft(carrot) } // On left arrow keypress
+    if (upKey) { moveUp(carrot) } // On up arrow keypress
 }
