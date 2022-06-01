@@ -17,7 +17,7 @@ const view = new View(document.querySelector("main"));
 const marker = new Marker();
 
 // Set font width and height
-view.fontHeight = 22;
+view.fontHeight = 26;
 view.fontWidth = 13.2;
 // Add carrot to view
 const carrotID = view.addCarrot();

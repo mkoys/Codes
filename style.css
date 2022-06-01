@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap');
+
 /* Default reset */
 * {
     margin: 0px;
@@ -23,15 +25,16 @@ main {
 }
 
 .carrot {
-    height: 22px;
+    height: 30px;
     width: 3px;
     background-color: yellow;
     position: absolute;
 }
 
 .line {
+    font-family: 'JetBrains Mono', monospace;
+    height: 26px;
     font-size: 22px;
-    height: 22px;
     color: white;
     display: flex;
 }
