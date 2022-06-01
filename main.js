@@ -2,6 +2,7 @@
 import Editor from "./Editor.js";
 import Carrot from "./Carrot.js";
 import View from "./View.js";
+import Marker from "./Marker.js";
 
 // Create keydown event listener and pass it to handler
 document.addEventListener("keydown", event => handleKeyboard(event));
@@ -11,6 +12,7 @@ const editor = new Editor();
 // Create new carrot with default postion
 const carrot = new Carrot();
 const view = new View(document.querySelector("main"));
+const marker = new Marker();
 
 // Handles keyboard input
 function handleKeyboard(event) {
@@ -23,6 +25,10 @@ function handleKeyboard(event) {
     const specialKeys = event.keyCode > 183 && event.keyCode < 224; // Spcial character key
     const basicKeys = aplhaNumKeys || numericKeys || specialKeys; // Basic typing keys together
 
+    const scheme = {
+        default: /(?<let>\blet\b)|(?<const>\bconst\b)/gm,
+    }
+
     // On basic key press
     if (basicKeys) {
         // Add event character on set line and column into editor
@@ -31,6 +37,8 @@ function handleKeyboard(event) {
         carrot.column++;
         // Update current line in view
         view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
+        const markedContent = marker.mark(editor.content[carrot.line], scheme.default, scheme);
+        view.updateLine(carrot.line, markedContent);
     }
 
     // On space key press
