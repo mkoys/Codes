@@ -78,6 +78,8 @@ export default class View {
             const tokenElement = document.createElement("p");
             // Add base class for token element
             tokenElement.classList.add("token");
+            // Add token class for token element
+            tokenElement.classList.add(token.type);
             // Add tokens text to token element
             tokenElement.textContent = token.text;
             // Append token element to line element

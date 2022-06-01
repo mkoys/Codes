@@ -26,7 +26,12 @@ const carrotID = view.addCarrot();
 function handleKeyboard(event) {
     const spaceKey = event.keyCode == 32; // Space key
     const removeKey = event.keyCode == 8; // Remove key
-    const newLineKey = event.keyCode == 13; // New Line key 
+    const newLineKey = event.keyCode == 13; // New Line key
+
+    const upKey = event.keyCode == 38; // Up key
+    const downKey = event.keyCode == 40; // Down key
+    const leftKey = event.keyCode == 37; // left key
+    const rightKey = event.keyCode == 39; // right key
 
     const aplhaNumKeys = event.keyCode > 47 && event.keyCode < 91; // AplhaNumeric key
     const numericKeys = event.keyCode > 95 && event.keyCode < 112; // Numberic key
@@ -105,8 +110,38 @@ function handleKeyboard(event) {
         carrot.line++;
         // Reset carrot column
         carrot.column = 0;
+        // Get tokenized content
+        const markedAppend = marker.mark(editor.content[carrot.line], scheme.default, scheme);
         // Append the new line into view
-        view.appendLine(carrot.line, [{ text: editor.content[carrot.line] }]);
+        view.appendLine(carrot.line, markedAppend);
+    }
+
+    if(downKey) {
+        if(carrot.line < editor.content.length) {
+            carrot.line++;
+        }
+    }
+
+    if(upKey) {
+        if(carrot.line > 0) {
+            carrot.line--;
+        }
+    }
+
+    if(leftKey) {
+        if(carrot.column > 0) {
+            carrot.column--;
+        }else {
+
+        }
+    }
+
+    if(rightKey) {
+        if(carrot.column < editor.lineLength(carrot.line)) {
+            carrot.column++;
+        }else {
+            
+        }
     }
 
     // Updates main carrot's position
