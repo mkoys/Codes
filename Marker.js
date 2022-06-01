@@ -22,8 +22,10 @@ export default class Marker {
 
         for (const match of matches) {
             // Get values from grops of match
+            // Get keys from grops of match
             // Grab set string index group of match
             const groupValues = Object.values(match.groups);
+            const groupKeys = Object.keys(match.groups);
             const groupIndex = groupValues.findIndex(item => typeof item === "string");
             // Match conter increment
             matchCounter++;
@@ -40,8 +42,9 @@ export default class Marker {
             }
 
             // Push found match by its index and length from index
+            console.log(match.groups);
             result.push({
-                type: groupValues[groupIndex],
+                type: groupKeys[groupIndex],
                 text: content.slice(match.index, match.index + match[0].length)
             })
 

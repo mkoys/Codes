@@ -25,6 +25,7 @@ function handleKeyboard(event) {
     const specialKeys = event.keyCode > 183 && event.keyCode < 224; // Spcial character key
     const basicKeys = aplhaNumKeys || numericKeys || specialKeys; // Basic typing keys together
 
+    // Scheme for syntax Highlighting
     const scheme = {
         default: /(?<let>\blet\b)|(?<const>\bconst\b)/gm,
     }
