@@ -4,30 +4,33 @@ import Carrot from "./Carrot.js";
 import View from "./View.js";
 import Marker from "./Marker.js";
 
+let scheme = null; // Scheme storage
+let carrotArr = []; // Carrot storage
+
 // Create new editor
 const editor = new Editor();
-// Create new carrot with default postion
-const carrot = new Carrot();
 // Create new view with root element
 const view = new View(document.querySelector("main"));
 // Create new highlighter
 const marker = new Marker();
-// Scheme storage
-let scheme = null;
-
-// Set font width and height
-view.fontHeight = 26;
-view.fontWidth = 13.2;
-// Add carrot to view
-const carrotID = view.addCarrot();
 
 // Method for setting scheme
 function setScheme(newScheme) {
     scheme = newScheme;
 }
 
+// Creates new carrot and returns it
+function createCarrot() {
+    // Create new carrot class
+    const carrot = new Carrot();
+    // Create carrot on view and add it's id to class
+    carrot.carrotID = view.addCarrot();
+    // Return created class
+    return carrot;
+}
+
 // Add content method
-function addContent(char) {
+function addContent(char, carrot) {
     // Add event character on set line and column into editor
     editor.addContent(carrot.line, carrot.column, char);
     // Increment carrot column
@@ -37,11 +40,11 @@ function addContent(char) {
     // Update line with tokenized content
     view.updateLine(carrot.line, markedContent);
     // Updates main carrot's position
-    view.updateCarrot(carrotID, carrot.column, carrot.line);
+    view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
 // Method remove content
-function removeContent() {
+function removeContent(carrot) {
     if (!carrot.column) {
         // If line is 0 return
         if (carrot.line == 0) { return }
@@ -68,11 +71,11 @@ function removeContent() {
         view.updateLine(carrot.line, markedContent);
     }
     // Updates main carrot's position
-    view.updateCarrot(carrotID, carrot.column, carrot.line);
+    view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
 // Method new line
-function newLine() {
+function newLine(carrot) {
     // Append line on carrot line and column
     editor.appendLine(carrot.line, carrot.column);
     // Get tokenized content
@@ -88,11 +91,11 @@ function newLine() {
     // Append the new line into view
     view.appendLine(carrot.line, markedAppend);
     // Updates main carrot's position
-    view.updateCarrot(carrotID, carrot.column, carrot.line);
+    view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
 // Method move down
-function moveDown() {
+function moveDown(carrot) {
     // Check if we are at the end of file
     if (carrot.line < editor.content.length) {
         // Increment carrot line
@@ -105,11 +108,11 @@ function moveDown() {
     }
 
     // Updates main carrot's position
-    view.updateCarrot(carrotID, carrot.column, carrot.line);
+    view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
 // Method move up
-function moveUp() {
+function moveUp(carrot) {
     // Check if we are at start of file
     if (carrot.line > 0) {
         // Decrement carrot line
@@ -122,11 +125,11 @@ function moveUp() {
     }
 
     // Updates main carrot's position
-    view.updateCarrot(carrotID, carrot.column, carrot.line);
+    view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
 // Method move left
-function moveLeft() {
+function moveLeft(carrot) {
     // Check if we are at start of line
     if (carrot.column > 0) {
         // Decrement carrot column
@@ -136,11 +139,11 @@ function moveLeft() {
     }
 
     // Updates main carrot's position
-    view.updateCarrot(carrotID, carrot.column, carrot.line);
+    view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
 // Method move right
-function moveRight() {
+function moveRight(carrot) {
     // Check if we are at end of line
     if (carrot.column < editor.lineLength(carrot.line)) {
         // Increment carrot column
@@ -149,17 +152,19 @@ function moveRight() {
 
     }
     // Updates main carrot's position
-    view.updateCarrot(carrotID, carrot.column, carrot.line);
+    view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
 // Export module
-export { 
+export {
+    view,
+    createCarrot,
     setScheme,
-    moveDown, 
-    moveUp, 
-    moveLeft, 
-    moveRight, 
-    addContent, 
-    removeContent, 
-    newLine 
+    moveDown,
+    moveUp,
+    moveLeft,
+    moveRight,
+    addContent,
+    removeContent,
+    newLine
 }

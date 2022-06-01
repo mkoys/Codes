@@ -1,7 +1,14 @@
-import {setScheme,addContent, removeContent, newLine, moveDown, moveRight, moveLeft, moveUp} from "./main.js";
+import Carrot from "./Carrot.js";
+import {view,createCarrot, setScheme,addContent, removeContent, newLine, moveDown, moveRight, moveLeft, moveUp} from "./main.js";
+
+const carrot = createCarrot();
 
 // Create keydown event listener and pass it to handler
 document.addEventListener("keydown", event => handleKeyboard(event));
+
+// Set font width and height
+view.fontHeight = 26;
+view.fontWidth = 13.2;
 
 // Scheme for syntax Highlighting
 const scheme = {
@@ -29,34 +36,34 @@ function handleKeyboard(event) {
     const basicKeys = aplhaNumKeys || numericKeys || specialKeys; // Basic typing keys together
 
     if(spaceKey) {
-        addContent("\xa0");
+        addContent("\xa0", carrot);
     }
 
     if(basicKeys) {
-        addContent(event.key);
+        addContent(event.key, carrot);
     }
 
     if(removeKey) {
-        removeContent();
+        removeContent(carrot);
     }
 
     if(newLineKey) {
-        newLine();
+        newLine(carrot);
     }
 
     if(rightKey) {
-        moveRight();
+        moveRight(carrot);
     }
 
     if(leftKey) {
-        moveLeft();
+        moveLeft(carrot);
     }
 
     if(downKey) {
-        moveDown();
+        moveDown(carrot);
     }
 
     if(upKey) {
-        moveUp();
+        moveUp(carrot);
     }
 }
