@@ -66,3 +66,7 @@ main {
 .functionName {
     color: springgreen;
 }
+
+.comment {
+    color: grey;
+}
