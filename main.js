@@ -152,4 +152,14 @@ function moveRight() {
     view.updateCarrot(carrotID, carrot.column, carrot.line);
 }
 
-export { setScheme,moveDown, moveUp, moveLeft, moveRight, addContent, removeContent, newLine }
+// Export module
+export { 
+    setScheme,
+    moveDown, 
+    moveUp, 
+    moveLeft, 
+    moveRight, 
+    addContent, 
+    removeContent, 
+    newLine 
+}
