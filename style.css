@@ -41,3 +41,11 @@ main {
 .number {
     color: orangered;
 }
+
+.function {
+ color: crimson;
+}
+
+.functionName {
+    color: springgreen;
+}

@@ -7,13 +7,13 @@ export default class Marker {
     mark(content, regex, scheme) {
         const matches = content.matchAll(regex); // RegExp Iterator of matches
         const [...matchesArr] = content.matchAll(regex); // Arr from RegExp match
-        
+
         let result = []; // Final tokenized content storage
         let matchCounter = 0; // Match couter
         let index = 0;
 
         // No match all text set to default
-        if(matchesArr.length < 1) {
+        if (matchesArr.length < 1) {
             result.push({
                 type: "default",
                 text: content
@@ -30,34 +30,47 @@ export default class Marker {
             // Match conter increment
             matchCounter++;
 
+            const schemeKeys = Object.keys(scheme);
+
             // If match is further then index add text to default group till index
             if (match.index > index) {
                 result.push({
                     type: "default",
-                    text: content.slice(index, match.index)
+                    text: content.slice(index, match.index),
+                    length: match.index - index
                 });
 
                 // Increment index by found length
                 index += match.index - index;
             }
 
-            // Push found match by its index and length from index
-            result.push({
-                type: groupKeys[groupIndex],
-                text: content.slice(match.index, match.index + match[0].length)
-            })
+            const shcemeIndex = schemeKeys.findIndex(key => key === groupKeys[groupIndex]);
+
+            if (shcemeIndex > -1) {
+                const tokenContent = content.slice(match.index, match.index + match[0].length);
+                const newContent = this.mark(tokenContent, scheme[schemeKeys[shcemeIndex]], scheme);
+                newContent.forEach(token => result.push(token));
+            } else {
+                // Push found match by its index and length from index
+                result.push({
+                    type: groupKeys[groupIndex],
+                    text: content.slice(match.index, match.index + match[0].length),
+                    length: match[0].length
+                });
+            }
 
             // Increment index by match length
             index += match[0].length;
 
             // If we are at last match item
-            if(matchCounter == matchesArr.length) {
+            if (matchCounter == matchesArr.length) {
                 // If current index is not at the end of content
-                if(index != content.length) {
+                if (index != content.length) {
                     // Push rest of content as default string
                     result.push({
                         type: "default",
-                        text: content.slice(index)
+                        text: content.slice(index),
+                        length: content.length - index
                     });
                 }
             }
