@@ -157,6 +157,8 @@ function moveRight(carrot) {
 
 // Export module
 export {
+    editor,
+    marker,
     view,
     createCarrot,
     setScheme,

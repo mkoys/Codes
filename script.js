@@ -14,22 +14,21 @@ import {
 
 // Create new carrot
 const carrot = createCarrot();
-
-// Create keydown event listener and pass it to handler
-document.addEventListener("keydown", event => handleKeyboard(event));
-
-// Set font width and height
-view.fontHeight = 26;
-view.fontWidth = 13.2;
-
-// Scheme for syntax Highlighting
+// Generate scheme for syntax Highlighting
 const scheme = {
     default: /(?<let>\blet\b)|(?<const>\bconst\b)|(?<operator>\-\=|\+\=|\-|\+|\\|\/|\%)|(?<signs>\=|\,)|(?<number>\b[0-9]+\b)|(?<func>\bfunction\b\s+\w+(\s+|)\(.*\))|(?<function>\bfunction\b)/gm,
     func: /(?<function>\bfunction\b)|(?<params>\(.*\))|(?<functionName>\w)/gm,
     params: /(?<bracket>\(|\))|(?<default>.*)/gm
 }
 
+// Set font width and height
+view.fontHeight = 26;
+view.fontWidth = 13.2;
+// Set scheme in core
 setScheme(scheme);
+
+// Create keydown event listener and pass it to handler
+document.addEventListener("keydown", event => handleKeyboard(event));
 
 // Handles keyboard input
 function handleKeyboard(event) {
