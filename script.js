@@ -1,6 +1,18 @@
-import Carrot from "./Carrot.js";
-import {view,createCarrot, setScheme,addContent, removeContent, newLine, moveDown, moveRight, moveLeft, moveUp} from "./main.js";
+// Import Core
+import {
+    view,
+    createCarrot,
+    setScheme,
+    addContent,
+    removeContent,
+    newLine,
+    moveDown,
+    moveRight,
+    moveLeft,
+    moveUp
+} from "./main.js";
 
+// Create new carrot
 const carrot = createCarrot();
 
 // Create keydown event listener and pass it to handler
@@ -35,35 +47,12 @@ function handleKeyboard(event) {
     const specialKeys = event.keyCode > 183 && event.keyCode < 224; // Spcial character key
     const basicKeys = aplhaNumKeys || numericKeys || specialKeys; // Basic typing keys together
 
-    if(spaceKey) {
-        addContent("\xa0", carrot);
-    }
-
-    if(basicKeys) {
-        addContent(event.key, carrot);
-    }
-
-    if(removeKey) {
-        removeContent(carrot);
-    }
-
-    if(newLineKey) {
-        newLine(carrot);
-    }
-
-    if(rightKey) {
-        moveRight(carrot);
-    }
-
-    if(leftKey) {
-        moveLeft(carrot);
-    }
-
-    if(downKey) {
-        moveDown(carrot);
-    }
-
-    if(upKey) {
-        moveUp(carrot);
-    }
+    if (spaceKey) { addContent("\xa0", carrot) }
+    if (basicKeys) { addContent(event.key, carrot) }
+    if (removeKey) { removeContent(carrot) }
+    if (newLineKey) { newLine(carrot) }
+    if (rightKey) { moveRight(carrot) }
+    if (leftKey) { moveLeft(carrot) }
+    if (downKey) { moveDown(carrot) }
+    if (upKey) { moveUp(carrot) }
 }

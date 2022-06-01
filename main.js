@@ -4,8 +4,8 @@ import Carrot from "./Carrot.js";
 import View from "./View.js";
 import Marker from "./Marker.js";
 
-let scheme = null; // Scheme storage
-let carrotArr = []; // Carrot storage
+// Scheme storage
+let scheme = null;
 
 // Create new editor
 const editor = new Editor();
