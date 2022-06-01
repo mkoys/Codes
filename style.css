@@ -52,11 +52,15 @@ main {
 }
 
 .signs {
-    color: aqua;
+    color: rgb(255, 108, 63);
+}
+
+.special {
+    color: rgb(0, 183, 255);
 }
 
 .number {
-    color: orangered;
+    color: rgb(67, 227, 177);
 }
 
 .function {

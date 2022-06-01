@@ -97,7 +97,7 @@ function newLine(carrot) {
 // Method move down
 function moveDown(carrot) {
     // Check if we are at the end of file
-    if (carrot.line < editor.content.length) {
+    if (carrot.line < editor.content.length - 1) {
         // Increment carrot line
         carrot.line++;
         // Check if we aren't exceeding line length
