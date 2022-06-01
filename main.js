@@ -35,9 +35,9 @@ function handleKeyboard(event) {
         editor.addContent(carrot.line, carrot.column, event.key);
         // Increment carrot column
         carrot.column++;
-        // Update current line in view
-        view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
+        // Get tokenized content
         const markedContent = marker.mark(editor.content[carrot.line], scheme.default, scheme);
+        // Update line with tokenized content
         view.updateLine(carrot.line, markedContent);
     }
 
@@ -47,8 +47,10 @@ function handleKeyboard(event) {
         editor.addContent(carrot.line, carrot.column, "\xa0");
         // Increment carrot column
         carrot.column++;
-        // Update current line in view
-        view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
+        // Get tokenized content
+        const markedContent = marker.mark(editor.content[carrot.line], scheme.default, scheme);
+        // Update line with tokenized content
+        view.updateLine(carrot.line, markedContent);
     }
 
     // On remove key press
@@ -64,15 +66,19 @@ function handleKeyboard(event) {
             view.removeLine(carrot.line);
             // Decrement carrot line
             carrot.line--;
-            // Update line in view and add right content to it
-            view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
+            // Get tokenized content
+            const markedContent = marker.mark(editor.content[carrot.line], scheme.default, scheme);
+            // Update line with tokenized content
+            view.updateLine(carrot.line, markedContent);
         } else {
             // Remove one character on current line and column
             editor.removeContent(carrot.line, carrot.column, 1);
             // Decrement column
             carrot.column--;
-            // Update current line in view
-            view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
+            // Get tokenized content
+            const markedContent = marker.mark(editor.content[carrot.line], scheme.default, scheme);
+            // Update line with tokenized content
+            view.updateLine(carrot.line, markedContent);
         }
     }
 
@@ -80,8 +86,10 @@ function handleKeyboard(event) {
     if (newLineKey) {
         // Append line on carrot line and column
         editor.appendLine(carrot.line, carrot.column);
-        // Update current line in view
-        view.updateLine(carrot.line, [{ text: editor.content[carrot.line] }]);
+        // Get tokenized content
+        const markedContent = marker.mark(editor.content[carrot.line], scheme.default, scheme);
+        // Update line with tokenized content
+        view.updateLine(carrot.line, markedContent);
         // Inciment carrot line
         carrot.line++;
         // Reset carrot column
@@ -89,6 +97,4 @@ function handleKeyboard(event) {
         // Append the new line into view
         view.appendLine(carrot.line, [{ text: editor.content[carrot.line] }]);
     }
-
-    console.log(editor.content, carrot);
 }

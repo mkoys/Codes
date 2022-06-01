@@ -21,3 +21,11 @@ main {
     color: white;
     display: flex;
 }
+
+.let {
+    color: red;
+}
+
+.const {
+    color: lightskyblue;
+}
