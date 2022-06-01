@@ -2,6 +2,36 @@
 export default class View {
     constructor(root) {
         this.root = root; // Root element
+        this.editor = root.querySelector(".editor"); // Editor element from root
+        this.carrots = [] // Store for carrots
+        this.fontWidth = 0; // Font width
+        this.fontHeight = 0; // Font height
+    }
+
+    // Adds carrot to root element
+    addCarrot() {
+        // Create carrot element
+        const element = document.createElement("div");
+        // Set element class
+        element.classList.add("carrot");
+
+        // Push to carrot index and prepend to root element
+        this.carrots.push(element);
+        this.root.prepend(element);
+        // Return ID of carrot
+        return this.carrots.length - 1;
+    }
+
+    // Updates position of carrot
+    updateCarrot(id, x, y) {
+        // Set's top and left offset in pixels on set element
+        this.carrots[id].style.top = (y * this.fontHeight).toString() + "px";
+        this.carrots[id].style.left = (x * this.fontWidth).toString() + "px";
+    }
+
+    // Removes carrot element
+    removeCarrot(id) {
+        this.carrots[id].remove();
     }
 
     // Updates selected line with set tokenized content
@@ -25,13 +55,13 @@ export default class View {
             lineElement.appendChild(tokenElement);
         });
 
-        // If child with line index doesn't exist on root element
-        if (!this.root.children[line]) {
+        // If child with line index doesn't exist on editor element
+        if (!this.editor.children[line]) {
             // Append new child with line element
-            this.root.appendChild(lineElement);
+            this.editor.appendChild(lineElement);
         } else {
-            // Replace root's element child with new line element
-            this.root.replaceChild(lineElement, this.root.children[line]);
+            // Replace editor's element child with new line element
+            this.editor.replaceChild(lineElement, this.editor.children[line]);
         }
     }
 
@@ -55,11 +85,11 @@ export default class View {
         });
 
         // Insert child before line index
-        this.root.insertBefore(lineElement, this.root.children[line]);
+        this.editor.insertBefore(lineElement, this.editor.children[line]);
     }
 
     // Removes line from view by line index
     removeLine(line) {
-        this.root.removeChild(this.root.children[line]);
+        this.editor.removeChild(this.editor.children[line]);
     }
 }

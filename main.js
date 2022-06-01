@@ -11,8 +11,16 @@ document.addEventListener("keydown", event => handleKeyboard(event));
 const editor = new Editor();
 // Create new carrot with default postion
 const carrot = new Carrot();
+// Create new view with root element
 const view = new View(document.querySelector("main"));
+// Create new highlighter
 const marker = new Marker();
+
+// Set font width and height
+view.fontHeight = 22;
+view.fontWidth = 13.2;
+// Add carrot to view
+const carrotID = view.addCarrot();
 
 // Handles keyboard input
 function handleKeyboard(event) {
@@ -100,4 +108,7 @@ function handleKeyboard(event) {
         // Append the new line into view
         view.appendLine(carrot.line, [{ text: editor.content[carrot.line] }]);
     }
+
+    // Updates main carrot's position
+    view.updateCarrot(carrotID, carrot.column, carrot.line);
 }
