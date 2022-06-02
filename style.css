@@ -39,46 +39,62 @@ main {
     display: flex;
 }
 
-.let {
-    color: hotpink;
+.property {
+    color: rgb(255, 199, 96);;
 }
 
-.const {
-    color: pink;
-}
-
-.operator {
-    color: yellow;
-}
-
-.signs {
-    color: rgb(255, 108, 63);
-}
-
-.special {
-    color: rgb(0, 183, 255);
-}
-
-.number {
-    color: rgb(67, 227, 177);
-}
-
-.keyword {
- color: crimson;
+.function {
+    color: rgb(0, 255, 255);;
 }
 
 .functionName {
-    color: springgreen;
+    color: rgb(79, 146, 223);
 }
 
-.comment {
-    color: grey;
+.brackets {
+    color: rgb(73, 48, 213);
+}
+
+.paramsBrackey {
+    color: olivedrab;
+}
+
+.variable {
+    color: rgb(165, 165, 165);
+}
+
+.number {
+    color: orangered;
+}
+
+.special {
+    color: rgb(185, 48, 213);
+}
+
+.keyword {
+    color: rgb(139, 48, 213);
+}
+
+.operant {
+    color: rgb(213, 174, 48)
+}
+
+.let {
+    color: rgb(85, 255, 198);
+}
+
+.const {
+    color: rgb(85, 255, 198);
 }
 
 .string {
-    color: lime;
+    color: rgb(35, 158, 97);
 }
 
-.bracket {
-    color: goldenrod;
+.comment {
+    color: rgb(98, 98, 98);
+}
+
+.default {
+    color: rgb(255, 96, 101);
 }

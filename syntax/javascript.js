@@ -1,5 +1,4 @@
 export default {
-    default: /(?<let>\blet\b)|(?<const>\bconst\b)|(?<comment>\/\/.*)|(?<special>\;|\=\>)|(?<signs>\=|\,)|(?<operator>\>|\<|\-\=|\+\=|\-|\+|\\|\/|\%|\&\&|\&|\|\||\|)|(?<number>\b[0-9]+\b)|(?<string>".*?")|(?<func>(\bfunction\b|\s+|)\w+(\s+|)\(.*\))|(?<keyword>(\bfunction\b|\bimport\b|\bfrom\b|\breturn\b|\bif\b))/gm,
-    func: /(?<function>\bfunction\b)|(?<params>\(.*\))|(?<functionName>\w)/gm,
-    params: /(?<bracket>\(|\))|(?<default>[^\)|\(]+)/gm
+    default: /(?<comment>\/\/.*)|(?<params>function\s*\w*\((.*|)\))|(?<brackets>(\(|\)|\{|\}|\[|\]))|(?<number>[0-9])|(?<let>(\b|(?=\.))let(\b|(?=\.)))|(?<const>(\b|(?=\.))const(\b|(?=\.)))|(?<property>\.\w+)|(?<special>\;|\,)|(?<string>".*?")|(?<operant>\+|-|\=|\/|\>|\<|\.)|(?<keyword>(\b|(?=\.))from(\b|(?=\.))|(\b|(?=\.))function(\b|(?=\.))|(\b|(?=\.))return(\b|(?=\.))|(\b|(?=\.))forEach(\b|(?=\.))|(\b|(?=\.))for(\b|(?=\.))|(\b|(?=\.))while(\b|(?=\.))|(\b|(?=\.))if(\b|(?=\.))|(\b|(?=\.))new(\b|(?=\.))|(\b|(?=\.))=>(\b|(?=\.))|(\b|(?=\.))export(\b|(?=\.))|(\b|(?=\.))import(\b|(?=\.))|(\b|(?=\.))true(\b|(?=\.))|(\b|(?=\.))false(\b|(?=\.)))/gm,
+    params: /(?<function>function)|(?<default>\(.*\))|(?<functionName>\w)/gm,
 }
