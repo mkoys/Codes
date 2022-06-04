@@ -30,17 +30,27 @@ function createCarrot() {
 }
 
 // Add content method
-function addContent(char, carrot) {
+function addContent(content, carrot) {
     // Add event character on set line and column into editor
-    editor.addContent(carrot.line, carrot.column, char);
+    editor.addContent(carrot.line, carrot.column, content);
     // Increment carrot column
-    carrot.column++;
+    carrot.column += content.length;
     // Get tokenized content
     const markedContent = marker.mark(editor.content[carrot.line], scheme.default, scheme);
     // Update line with tokenized content
     view.updateLine(carrot.line, markedContent);
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+}
+
+// Method to tabulate content
+function tabulateContent(carrot, spacing) {
+    // Get numer of times to add space for correct spacing
+    let formula = spacing - carrot.column % spacing;
+    // Create repeated space text
+    let tabText = "\xa0".repeat(formula);
+    // Add spacetext to content by carrot
+    addContent(tabText, carrot);
 }
 
 // Method remove content
@@ -203,5 +213,6 @@ export {
     moveEnd,
     addContent,
     removeContent,
-    newLine
+    newLine,
+    tabulateContent
 }

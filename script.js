@@ -15,7 +15,8 @@ import {
     moveLeft,
     moveUp,
     moveHome,
-    moveEnd
+    moveEnd,
+    tabulateContent
 } from "./core/main.js";
 
 // Set scheme in core
@@ -39,6 +40,7 @@ function handleKeyboard(event) {
 
     const homeKey = event.keyCode == 36; // Home key
     const endKey = event.keyCode == 35; // End key
+    const tabKey = event.keyCode == 9; // Tab key
     const upKey = event.keyCode == 38; // Up key
     const downKey = event.keyCode == 40; // Down key
     const leftKey = event.keyCode == 37; // left key
@@ -76,4 +78,5 @@ function handleKeyboard(event) {
     if (upKey) { moveUp(carrot) } // On up arrow keypress
     if (homeKey) { moveHome(carrot, { fromWord: true }) } // On home keypress
     if (endKey) { moveEnd(carrot) } // On end keypress
+    if (tabKey) { tabulateContent(carrot, 4) } // On tab keypress
 }
