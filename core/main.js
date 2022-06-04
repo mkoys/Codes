@@ -161,6 +161,8 @@ function moveHome(carrot, options) {
     if (options.fromWord) {
         // Find first instance of empty space on line
         let match = editor.findChar(carrot.line, "\xa0");
+
+        console.log(editor.findChar(carrot.line, " "));
         // Check if are at matched position
         if (match < 0 || carrot.column == match) {
             // Set carrot to start of line and return

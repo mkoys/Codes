@@ -5,15 +5,21 @@ export default class Editor {
     }
 
     // Finds first character that matches from line
-    findChar(line, char) {
+    findChar(line, char, charge) {
         // Storage with default -1 for index of matched character
         let match = -1;
         // Check if line exist's
         if (this.lineLength(line)) {
             // Split line into character array
             let lineArr =  this.content[line].split("");
-            // Set match to index of set character
-            match = lineArr.findIndex(item => item !== char);
+            // Check if should be positive or negative
+            if(charge) {
+                // Set non matched to index of set character
+                match = lineArr.findIndex(item => item === char);
+            }else {
+                // Set matched to index of set character
+                match = lineArr.findIndex(item => item !== char);
+            }
         }
         // Return matched index
         return match;

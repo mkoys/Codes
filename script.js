@@ -53,7 +53,8 @@ function handleKeyboard(event) {
     if (event.ctrlKey && event.keyCode == 86) {
         navigator.clipboard.readText().then(clipText => {
             view.editor.innerHTML = ""
-            const newContent = clipText.replace("\t", "\xa0").split("\n");
+            let newContent = clipText.replaceAll("\t", "\xa0");
+            newContent = clipText.replaceAll(" ", "\xa0").split("\n");
             view.editor.innerHTML = "";
             editor.content = [];
             newContent.forEach((line, index) => {
