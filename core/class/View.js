@@ -6,28 +6,6 @@ export default class View {
         this.carrots = [] // Store for carrots
         this.fontWidth = 0; // Font width
         this.fontHeight = 0; // Font height
-        
-        this.setFont(); // Set font
-    }
-
-    // Set's up current font
-    setFont() {
-        // Create element with pre tag
-        let element = document.createElement("pre");
-        // Set one letter to content
-        element.textContent = "\xa0";
-        // Add tester class to it so it's hidden
-        element.classList.add("tester");
-        // Append it to body
-        document.body.appendChild(element);
-        // Get bounding info of element
-        const elementInfo = element.getBoundingClientRect();
-        // Set font width
-        this.fontWidth = elementInfo.width;
-        // Set font height
-        this.fontHeight = elementInfo.height;
-        // Remove element from dom
-        document.body.removeChild(element);
     }
 
     // Adds carrot to root element

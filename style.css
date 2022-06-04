@@ -21,6 +21,7 @@ main {
 }
 
 .tester {
+    font-family: 'JetBrains Mono', monospace;
     position: absolute;
     font-size: 22px;
     visibility: hidden;

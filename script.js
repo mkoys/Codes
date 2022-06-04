@@ -20,6 +20,10 @@ import {
     deleteContent
 } from "./core/main.js";
 
+// Set font width and height
+view.fontHeight = 26;
+view.fontWidth = 13.2;
+
 const carrot = createCarrot(); // Create new carrot
 const tabSpacing = 4; // Set spacing for tab
 
