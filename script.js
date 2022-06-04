@@ -71,5 +71,5 @@ function handleKeyboard(event) {
     if (downKey) { moveDown(carrot) } // On down arrow keypress
     if (leftKey) { moveLeft(carrot) } // On left arrow keypress
     if (upKey) { moveUp(carrot) } // On up arrow keypress
-    if (homeKey) { moveHome(carrot) } // On home keypress
+    if (homeKey) { moveHome(carrot, {fromWord: true}) } // On home keypress
 }

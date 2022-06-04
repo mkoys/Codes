@@ -156,21 +156,27 @@ function moveRight(carrot) {
 }
 
 // Method move home
-function moveHome(carrot) {
-    // Storage for where words starts in line, default start line
-    let match = 0;
-    // Check if line isn't empty by type checking string
-    if (typeof editor.content[carrot.line] === "string") {
-        // Find where word starts
-        match = editor.content[carrot.line].split("").findIndex(item => item !== "\xa0");
-    }
-    // Check if are at matched position
-    if (carrot.column == match) {
-        // Set carrot to start of line and return
-        carrot.column = 0;
+function moveHome(carrot, options) {
+    // Check if try to match from word start
+    if (options.fromWord) {
+        // Storage for where words starts in line, default start line
+        let match = 0;
+        // Check if line isn't empty by type checking string
+        if (typeof editor.content[carrot.line] === "string") {
+            // Find where word starts
+            match = editor.content[carrot.line].split("").findIndex(item => item !== "\xa0");
+        }
+        // Check if are at matched position
+        if (carrot.column == match) {
+            // Set carrot to start of line and return
+            carrot.column = 0;
+        } else {
+            // Set carrot to match
+            carrot.column = match;
+        }
     } else {
-        // Set carrot to match
-        carrot.column = match;
+        // Set carrot to start of line
+        carrot.column = 0;
     }
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
