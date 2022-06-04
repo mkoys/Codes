@@ -1,8 +1,8 @@
 // Import classes
-import Editor from "./Editor.js";
-import Carrot from "./Carrot.js";
-import View from "./View.js";
-import Marker from "./Marker.js";
+import Editor from "./class/Editor.js";
+import Carrot from "./class/Carrot.js";
+import View from "./class/View.js";
+import Marker from "./class/Marker.js";
 
 // Scheme storage
 let scheme = null;

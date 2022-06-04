@@ -14,7 +14,7 @@ import {
     moveRight,
     moveLeft,
     moveUp
-} from "./main.js";
+} from "./core/main.js";
 
 // Set scheme in core
 setScheme(scheme);
