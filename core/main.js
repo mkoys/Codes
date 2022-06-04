@@ -157,32 +157,18 @@ function moveRight(carrot) {
 
 // Method move home
 function moveHome(carrot, options) {
-    // Check if try to match from word start
-    if (options.fromWord) {
-        // Find first instance of empty space on line
-        let match = editor.findChar(carrot.line, "\xa0");
-
-        console.log(editor.findChar(carrot.line, " "));
-        // Check if are at matched position
-        if (match < 0 || carrot.column == match) {
-            // Set carrot to start of line and return
-            carrot.column = 0;
-        } else {
-            // Set carrot to match
-            carrot.column = match;
-        }
-    } else {
-        // Set carrot to start of line
-        carrot.column = 0;
-    }
+    // Checks if should find first word character or be set to 0
+    let match = options.fromWord ? editor.findChar(carrot.line, "\xa0") : 0;
+    // Checks if we haven't found index and then if we aren't already at index set accordingly
+    carrot.column = match < 0 || carrot.column == match ? 0 : match
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
 function moveEnd(carrot) {
-        carrot.column = editor.lineLength(carrot.line);
-        // Updates main carrot's position
-        view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+    carrot.column = editor.lineLength(carrot.line);
+    // Updates main carrot's position
+    view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
 // Export module
