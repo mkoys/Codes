@@ -80,3 +80,7 @@ main {
 .number {
     color: rgb(46, 177, 247);
 }
+
+.bool {
+    color: burlywood;
+}
