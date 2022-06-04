@@ -145,9 +145,9 @@ function moveUp(carrot) {
         // Store current line length
         const lineLength = editor.lineLength(carrot.line);
         // Check if carrot index is bigger than current line
-        if (carrot.index > editor.lineLength(carrot.line)) {
+        if (carrot.index > lineLength) {
             // Set carrot column to current line length
-            carrot.column = editor.lineLength(carrot.line);
+            carrot.column = lineLength;
         } else {
             // Set carrot column to carrot index 
             carrot.column = carrot.index;
