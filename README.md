@@ -3,5 +3,5 @@ A programmers text editor
 
 ## Work List
 - [ ] Move looping (up, down, right, left)
-- [ ] End key
+- [x] End key
 - [ ] Tab key

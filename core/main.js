@@ -177,6 +177,12 @@ function moveHome(carrot, options) {
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
+function moveEnd(carrot) {
+        carrot.column = editor.lineLength(carrot.line);
+        // Updates main carrot's position
+        view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+}
+
 // Export module
 export {
     editor,
@@ -189,6 +195,7 @@ export {
     moveLeft,
     moveRight,
     moveHome,
+    moveEnd,
     addContent,
     removeContent,
     newLine
