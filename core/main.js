@@ -159,15 +159,10 @@ function moveRight(carrot) {
 function moveHome(carrot, options) {
     // Check if try to match from word start
     if (options.fromWord) {
-        // Storage for where words starts in line, default start line
-        let match = 0;
-        // Check if line isn't empty by type checking string
-        if (typeof editor.content[carrot.line] === "string") {
-            // Find where word starts
-            match = editor.content[carrot.line].split("").findIndex(item => item !== "\xa0");
-        }
+        // Find first instance of empty space on line
+        let match = editor.findChar(carrot.line, "\xa0");
         // Check if are at matched position
-        if (carrot.column == match) {
+        if (match < 0 || carrot.column == match) {
             // Set carrot to start of line and return
             carrot.column = 0;
         } else {

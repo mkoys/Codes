@@ -4,6 +4,21 @@ export default class Editor {
         this.content = []; // All current content split by lines
     }
 
+    // Finds first character that matches from line
+    findChar(line, char) {
+        // Storage with default -1 for index of matched character
+        let match = -1;
+        // Check if line exist's
+        if (this.lineLength(line)) {
+            // Split line into character array
+            let lineArr =  this.content[line].split("");
+            // Set match to index of set character
+            match = lineArr.findIndex(item => item !== char);
+        }
+        // Return matched index
+        return match;
+    }
+
     // Return length of selected line
     lineLength(line) {
         // If content exist return it's length else return 0
