@@ -1,4 +1,3 @@
 export default {
-    default: /(?<comment>\/\/.*)|(?<params>function\s*\w*\((.*|)\))|(?<brackets>(\(|\)|\{|\}|\[|\]))|(?<number>[0-9])|(?<let>(\b|(?=\.))let(\b|(?=\.)))|(?<const>(\b|(?=\.))const(\b|(?=\.)))|(?<property>\.\w+)|(?<special>\;|\,)|(?<string>".*?")|(?<operant>\+|-|\=|\/|\>|\<|\.)|(?<keyword>(\b|(?=\.))from(\b|(?=\.))|(\b|(?=\.))function(\b|(?=\.))|(\b|(?=\.))return(\b|(?=\.))|(\b|(?=\.))forEach(\b|(?=\.))|(\b|(?=\.))for(\b|(?=\.))|(\b|(?=\.))while(\b|(?=\.))|(\b|(?=\.))if(\b|(?=\.))|(\b|(?=\.))new(\b|(?=\.))|(\b|(?=\.))=>(\b|(?=\.))|(\b|(?=\.))export(\b|(?=\.))|(\b|(?=\.))import(\b|(?=\.))|(\b|(?=\.))true(\b|(?=\.))|(\b|(?=\.))false(\b|(?=\.)))/gm,
-    params: /(?<function>function)|(?<default>\(.*\))|(?<functionName>\w)/gm,
+    default:/(?<string>".*?")|(?<comment>\/\/.*)|(?<bracket>\(|\)|\{|\}|\[|\])|(?<variable>\bconst\b|\blet\b|\bvar\b)|(?<operator>\=\>|\!\=|\!\=\=|\=\=\=|\=\=|\!\=\=|\!\=|\<\=|\>\=|\+\+|\-\-|\+\=|\-\=|\=|\+|\-|\>|\<)|(?<special>\breturn\b|\bfunction\b|\bfor\b|\bwhile\b|\bdo\b|\bforEach\b|\bclass\b|\bconstructor\b|\bimport\b|\bexport\b|\bfrom\b|\bdefault\b|\bif\b|\belse\b)/gm,
 }

@@ -39,62 +39,30 @@ main {
     display: flex;
 }
 
-.property {
-    color: rgb(255, 199, 96);;
-}
-
-.function {
-    color: rgb(0, 255, 255);;
-}
-
-.functionName {
-    color: rgb(79, 146, 223);
-}
-
-.brackets {
-    color: rgb(73, 48, 213);
-}
-
-.paramsBrackey {
-    color: olivedrab;
-}
-
 .variable {
-    color: rgb(165, 165, 165);
-}
-
-.number {
-    color: orangered;
+    color: rgb(233, 233, 0);
 }
 
 .special {
-    color: rgb(185, 48, 213);
-}
-
-.keyword {
-    color: rgb(139, 48, 213);
-}
-
-.operant {
-    color: rgb(213, 174, 48)
-}
-
-.let {
-    color: rgb(85, 255, 198);
-}
-
-.const {
-    color: rgb(85, 255, 198);
-}
-
-.string {
-    color: rgb(35, 158, 97);
-}
-
-.comment {
-    color: rgb(98, 98, 98);
+    color: aqua;
 }
 
 .default {
-    color: rgb(255, 96, 101);
+    color: rgb(255, 255, 255);
+}
+
+.comment {
+    color: rgb(154, 154, 154);
+}
+
+.string {
+    color: rgb(27, 225, 27);
+}
+
+.bracket {
+    color: violet;
+}
+
+.operator {
+    color: darkorange;
 }
