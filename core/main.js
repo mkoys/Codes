@@ -105,10 +105,12 @@ function moveDown(carrot) {
             // Set carrot column to current line length
             carrot.column = editor.lineLength(carrot.line);
         }
-    }
-
-    // Updates main carrot's position
-    view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+        // Updates main carrot's position
+        view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+        // On success return true
+        return true;
+        // If not preformed return false
+    } else { return false }
 }
 
 // Method move up
@@ -122,34 +124,47 @@ function moveUp(carrot) {
             // Set carrot column to current line length
             carrot.column = editor.lineLength(carrot.line);
         }
-    }
-
-    // Updates main carrot's position
-    view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+        // Updates main carrot's position
+        view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+        // On success return true
+        return true;
+        // If not preformed return false
+    } else { return false }
 }
 
 // Method move left
-function moveLeft(carrot) {
+function moveLeft(carrot, options) {
     // Check if we are at start of line
     if (carrot.column > 0) {
         // Decrement carrot column
         carrot.column--;
     } else {
-
+        // Check if looping is enabled
+        if (options && options.loop) {
+            // Store if carrot has been moved
+            const moved = moveUp(carrot);
+            // Check if carrot moved up set column to the end of line
+            if (moved) { carrot.column = editor.lineLength(carrot.line) }
+        }
     }
-
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
 // Method move right
-function moveRight(carrot) {
+function moveRight(carrot, options) {
     // Check if we are at end of line
     if (carrot.column < editor.lineLength(carrot.line)) {
         // Increment carrot column
         carrot.column++;
     } else {
-
+        // Check if looping is enabled
+        if (options && options.loop) {
+            // Store if carrot has been moved
+            const moved = moveDown(carrot);
+            // Check if carrot moved down reset column position
+            if (moved) { carrot.column = 0 }
+        }
     }
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);

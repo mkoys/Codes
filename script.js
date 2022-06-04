@@ -70,9 +70,9 @@ function handleKeyboard(event) {
     if (basicKeys) { addContent(event.key, carrot) } // On basic input keypress
     if (removeKey) { removeContent(carrot) } // On backspace keypress
     if (newLineKey) { newLine(carrot) } // On enter keypress
-    if (rightKey) { moveRight(carrot) } // On right arrow keypress
+    if (rightKey) { moveRight(carrot, { loop: true }) } // On right arrow keypress
+    if (leftKey) { moveLeft(carrot, { loop: true }) } // On left arrow keypress
     if (downKey) { moveDown(carrot) } // On down arrow keypress
-    if (leftKey) { moveLeft(carrot) } // On left arrow keypress
     if (upKey) { moveUp(carrot) } // On up arrow keypress
     if (homeKey) { moveHome(carrot, { fromWord: true }) } // On home keypress
     if (endKey) { moveEnd(carrot) } // On end keypress
