@@ -19,13 +19,15 @@ import {
     tabulateContent
 } from "./core/main.js";
 
-// Set scheme in core
-setScheme(scheme);
-// Create new carrot
-const carrot = createCarrot();
 // Set font width and height
 view.fontHeight = 26;
 view.fontWidth = 13.2;
+
+const carrot = createCarrot(); // Create new carrot
+const tabSpacing = 4; // Set spacing for tab
+
+// Set scheme in core
+setScheme(scheme);
 
 // Create keydown event listener and pass it to handler
 document.addEventListener("keydown", event => handleKeyboard(event));
@@ -78,5 +80,5 @@ function handleKeyboard(event) {
     if (upKey) { moveUp(carrot) } // On up arrow keypress
     if (homeKey) { moveHome(carrot, { fromWord: true }) } // On home keypress
     if (endKey) { moveEnd(carrot) } // On end keypress
-    if (tabKey) { tabulateContent(carrot, 4) } // On tab keypress
+    if (tabKey) { tabulateContent(carrot, tabSpacing) } // On tab keypress
 }
