@@ -9,18 +9,11 @@ export default class Editor {
         // Storage with default -1 for index of matched character
         let match = -1;
         // Check if line exist's
-        if (this.lineLength(line)) {
-            // Split line into character array
-            let lineArr =  this.content[line].split("");
-            // Check if should be positive or negative
-            if(charge) {
-                // Set non matched to index of set character
-                match = lineArr.findIndex(item => item === char);
-            }else {
-                // Set matched to index of set character
-                match = lineArr.findIndex(item => item !== char);
-            }
-        }
+        if (!this.lineLength(line)) { return }
+        // Split line into character array
+        let lineArr = this.content[line].split("");
+        // Set non matched to index of set character
+        match = lineArr.findIndex(item => charge ? item === char : item !== char);
         // Return matched index
         return match;
     }
@@ -65,7 +58,7 @@ export default class Editor {
         // Store before content from 0 to column. If empty set to string
         const beforeContent = this.content[line] ? this.content[line].slice(0, column) : "";
         // Set current line with before content
-        this.content[line] = beforeContent; 
+        this.content[line] = beforeContent;
         // Add line at line index + 1 and add left content to it
         this.content.splice(line + 1, 0, afterContent);
     }
