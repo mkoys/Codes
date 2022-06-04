@@ -15,7 +15,7 @@ export default class View {
         // Create element with pre tag
         let element = document.createElement("pre");
         // Set one letter to content
-        element.textContent = " ";
+        element.textContent = "\xa0";
         // Add tester class to it so it's hidden
         element.classList.add("tester");
         // Append it to body
