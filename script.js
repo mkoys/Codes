@@ -81,6 +81,4 @@ function handleKeyboard(event) {
     if (homeKey) { moveHome(carrot, { fromWord: true }) } // On home keypress
     if (endKey) { moveEnd(carrot) } // On end keypress
     if (tabKey) { tabulateContent(carrot, tabSpacing) } // On tab keypress
-
-    console.log(carrot.index);
 }
