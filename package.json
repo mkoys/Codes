@@ -1,0 +1,24 @@
+{
+  "name": "codes",
+  "version": "0.0.1",
+  "description": "A programmers text editor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://localserver/Mkoys/codes.git"
+  },
+  "keywords": [
+    "text",
+    "editor",
+    "texteditor",
+    "codes"
+  ],
+  "author": "mkoys",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^19.0.3"
+  }
+}
