@@ -165,7 +165,9 @@ function moveHome(carrot, options) {
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
 
+// Method move to the end of line
 function moveEnd(carrot) {
+    // Set collumn of carrot to the length of line
     carrot.column = editor.lineLength(carrot.line);
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
