@@ -20,3 +20,4 @@
 (C) End key {cm:2022-06-04}
 (D) Move looping {cm:2022-06-04}
 (E) Tab key {cm:2022-06-04}
+(F) Delete key {cm:2022-06-04}

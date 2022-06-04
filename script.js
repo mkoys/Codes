@@ -16,7 +16,8 @@ import {
     moveUp,
     moveHome,
     moveEnd,
-    tabulateContent
+    tabulateContent,
+    deleteContent
 } from "./core/main.js";
 
 // Set font width and height
@@ -43,6 +44,7 @@ function handleKeyboard(event) {
     const homeKey = event.keyCode == 36; // Home key
     const endKey = event.keyCode == 35; // End key
     const tabKey = event.keyCode == 9; // Tab key
+    const deleteKey = event.keyCode == 46; // Delete key
     const upKey = event.keyCode == 38; // Up key
     const downKey = event.keyCode == 40; // Down key
     const leftKey = event.keyCode == 37; // left key
@@ -81,4 +83,5 @@ function handleKeyboard(event) {
     if (homeKey) { moveHome(carrot, { fromWord: true }) } // On home keypress
     if (endKey) { moveEnd(carrot) } // On end keypress
     if (tabKey) { tabulateContent(carrot, tabSpacing) } // On tab keypress
+    if (deleteKey) { deleteContent(carrot) } // On delete keypress
 }

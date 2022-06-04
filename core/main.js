@@ -90,6 +90,29 @@ function removeContent(carrot) {
     carrot.index = carrot.column;
 }
 
+function deleteContent(carrot) {
+    // Check if we are at the end of line
+    if (carrot.column == editor.lineLength(carrot.line)) {
+        // If line is 0 return
+        if (carrot.line == editor.content.length) { return }
+        // Remove line plus one from editor
+        editor.removeLine(carrot.line + 1);
+        // Remove line plus one from view
+        view.removeLine(carrot.line + 1);
+        // Get tokenized content
+        const markedContent = marker.mark(editor.content[carrot.line], scheme.default, scheme);
+        // Update line with tokenized content
+        view.updateLine(carrot.line, markedContent);
+    } else {
+        // Remove one character on current line and column plus one
+        editor.removeContent(carrot.line, carrot.column + 1, 1);
+        // Get tokenized content
+        const markedContent = marker.mark(editor.content[carrot.line], scheme.default, scheme);
+        // Update line with tokenized content
+        view.updateLine(carrot.line, markedContent);
+    }
+}
+
 // Method new line
 function newLine(carrot) {
     // Append line on carrot line and column
@@ -240,5 +263,6 @@ export {
     addContent,
     removeContent,
     newLine,
-    tabulateContent
+    tabulateContent,
+    deleteContent
 }
