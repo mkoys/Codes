@@ -21,7 +21,7 @@
 (D) Move looping {cm:2022-06-04}
 (E) Tab key {cm:2022-06-04}
 (F) Delete key {cm:2022-06-04}
+(G) Electron {cm:2022-06-04}
 ### Sun Jun 5
-(A) Electron
 (B) Token move
 (C) Paste
