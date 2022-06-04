@@ -66,3 +66,7 @@ main {
 .operator {
     color: darkorange;
 }
+
+.number {
+    color: rgb(46, 177, 247);
+}

@@ -46,10 +46,10 @@ function handleKeyboard(event) {
     const basicKeys = aplhaNumKeys || numericKeys || specialKeys; // Basic typing keys together
 
     // FOR TESTING ONLY PASTE
-    if(event.ctrlKey && event.keyCode == 86) {
+    if (event.ctrlKey && event.keyCode == 86) {
         navigator.clipboard.readText().then(clipText => {
             view.editor.innerHTML = ""
-            const newContent= clipText.replace("\t", "\xa0").split("\n");
+            const newContent = clipText.replace("\t", "\xa0").split("\n");
             view.editor.innerHTML = "";
             editor.content = [];
             newContent.forEach((line, index) => {
@@ -57,7 +57,7 @@ function handleKeyboard(event) {
                 const marked = marker.mark(line, scheme.default, scheme);
                 view.updateLine(index, marked);
             })
-            
+
         })
     }
 
