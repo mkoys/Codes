@@ -41,6 +41,8 @@ function addContent(content, carrot) {
     view.updateLine(carrot.line, markedContent);
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+    // Set carrot index
+    carrot.index = carrot.column;
 }
 
 // Method to tabulate content
@@ -51,6 +53,8 @@ function tabulateContent(carrot, spacing) {
     let tabText = "\xa0".repeat(formula);
     // Add spacetext to content by carrot
     addContent(tabText, carrot);
+    // Set carrot index
+    carrot.index = carrot.column;
 }
 
 // Method remove content
@@ -82,6 +86,8 @@ function removeContent(carrot) {
     }
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+    // Set carrot index
+    carrot.index = carrot.column;
 }
 
 // Method new line
@@ -102,6 +108,8 @@ function newLine(carrot) {
     view.appendLine(carrot.line, markedAppend);
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+    // Set carrot index
+    carrot.index = carrot.column;
 }
 
 // Method move down
@@ -110,10 +118,15 @@ function moveDown(carrot) {
     if (carrot.line < editor.content.length - 1) {
         // Increment carrot line
         carrot.line++;
-        // Check if we aren't exceeding line length
-        if (editor.lineLength(carrot.line) < carrot.column) {
+        // Store current line length
+        const lineLength = editor.lineLength(carrot.line);
+        // Check if carrot index is bigger than current line
+        if (carrot.index > lineLength) {
             // Set carrot column to current line length
-            carrot.column = editor.lineLength(carrot.line);
+            carrot.column = lineLength;
+        } else {
+            // Set carrot column to carrot index 
+            carrot.column = carrot.index;
         }
         // Updates main carrot's position
         view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
@@ -129,10 +142,15 @@ function moveUp(carrot) {
     if (carrot.line > 0) {
         // Decrement carrot line
         carrot.line--;
-        // Check if we aren't exceeding line length
-        if (editor.lineLength(carrot.line) < carrot.column) {
+        // Store current line length
+        const lineLength = editor.lineLength(carrot.line);
+        // Check if carrot index is bigger than current line
+        if (carrot.index > editor.lineLength(carrot.line)) {
             // Set carrot column to current line length
             carrot.column = editor.lineLength(carrot.line);
+        } else {
+            // Set carrot column to carrot index 
+            carrot.column = carrot.index;
         }
         // Updates main carrot's position
         view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
@@ -157,6 +175,8 @@ function moveLeft(carrot, options) {
             if (moved) { carrot.column = editor.lineLength(carrot.line) }
         }
     }
+    // Set carrot index
+    carrot.index = carrot.column;
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
@@ -176,6 +196,8 @@ function moveRight(carrot, options) {
             if (moved) { carrot.column = 0 }
         }
     }
+    // Set carrot index
+    carrot.index = carrot.column;
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
 }
@@ -185,9 +207,11 @@ function moveHome(carrot, options) {
     // Checks if should find first word character or be set to 0
     let match = options.fromWord ? editor.findChar(carrot.line, "\xa0") : 0;
     // Checks if we haven't found index and then if we aren't already at index set accordingly
-    carrot.column = match < 0 || carrot.column == match ? 0 : match
+    carrot.column = match < 0 || carrot.column == match ? 0 : match;
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+    // Set carrot index
+    carrot.index = carrot.column;
 }
 
 // Method move to the end of line
@@ -196,6 +220,8 @@ function moveEnd(carrot) {
     carrot.column = editor.lineLength(carrot.line);
     // Updates main carrot's position
     view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+    // Set carrot index
+    carrot.index = carrot.column;
 }
 
 // Export module
