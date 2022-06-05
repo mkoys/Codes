@@ -4,7 +4,8 @@
   "description": "A programmers text editor",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "nodemon --exec 'npm run start'"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "author": "mkoys",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^19.0.3"
+    "electron": "^19.0.3",
+    "nodemon": "^2.0.16"
   }
 }
