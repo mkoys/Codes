@@ -31,6 +31,29 @@ function createCarrot() {
 
 // Add content method
 function addContent(content, carrot) {
+    // Check if multy content is present
+    if (typeof content !== "string") {
+        // Add multiple lines to content
+        editor.addMultyContent(carrot.line, carrot.column, content);
+        // Loop each new line
+        for (let index = 0; index < content.length; index++) {
+            // Get tokenized content
+            const markedContent = marker.mark(editor.content[carrot.line + index], scheme.default, scheme);
+            // Update line with tokenized content on first and last line then append the rest
+            if (index == 0) { view.updateLine(carrot.line + index, markedContent) } 
+            else if (index == content.length - 1) { view.updateLine(carrot.line + index, markedContent) } 
+            else { view.appendLine(carrot.line + index, markedContent) }
+        }
+        // Increment carrot line
+        carrot.line += content.length - 1;
+        // Increment carrot column
+        carrot.column = content[content.length - 1].length;
+        // Updates main carrot's position
+        view.updateCarrot(carrot.carrotID, carrot.column, carrot.line);
+        // Set carrot index
+        carrot.index = carrot.column;
+        return;
+    }
     // Add event character on set line and column into editor
     editor.addContent(carrot.line, carrot.column, content);
     // Increment carrot column
@@ -94,7 +117,7 @@ function deleteContent(carrot) {
     // Check if we are at the end of line
     if (carrot.column == editor.lineLength(carrot.line)) {
         // If line is 0 return
-        if (carrot.line == editor.content.length) { return }
+        if (carrot.line == editor.content.length - 1) { return }
         // Remove line plus one from editor
         editor.removeLine(carrot.line + 1);
         // Remove line plus one from view

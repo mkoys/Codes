@@ -24,6 +24,23 @@ export default class Editor {
         return this.content[line] ? this.content[line].length : 0;
     }
 
+    // Adds multyline content at chosen line and column
+    addMultyContent(line, column, content) {
+        // Store after content from column. If empty set to string
+        const afterContent = this.content[line] ? this.content[line].slice(column) : "";
+        // Store before content from 0 to column. If empty set to string
+        const beforeContent = this.content[line] ? this.content[line].slice(0, column) : "";
+        // Set current line with before content
+        this.content[line] = beforeContent + content[0];
+        // Add line at line index + 1 and add left content to it
+        this.content.splice(line + 1, 0, content[content.length - 1] + afterContent);
+        // Loop each line after first and before last line
+        for (let index = 1; index < content.length -1; index++) {
+            // Add line at right index with content 
+            this.content.splice(line + index, 0, content[index]);
+        }
+    }
+
     // Adds content at choosen line and column
     addContent(line, column, content) {
         // Store selected line content if empty set to string

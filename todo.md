@@ -22,6 +22,9 @@
 (E) Tab key {cm:2022-06-04}
 (F) Delete key {cm:2022-06-04}
 (G) Electron {cm:2022-06-04}
-### Sun Jun 5
-(B) Token move
-(C) Paste
+### Sat Jun 18
+(C) Paste {cm:2022-06-18}
+
+### No date
+(A) Token move
+(B) Select text

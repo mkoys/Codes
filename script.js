@@ -58,18 +58,11 @@ function handleKeyboard(event) {
     // FOR TESTING ONLY PASTE
     if (event.ctrlKey && event.keyCode == 86) {
         navigator.clipboard.readText().then(clipText => {
-            view.editor.innerHTML = ""
             let newContent = clipText.replaceAll("\t", "\xa0");
             newContent = clipText.replaceAll(" ", "\xa0").split("\n");
-            view.editor.innerHTML = "";
-            editor.content = [];
-            newContent.forEach((line, index) => {
-                editor.content.push(line);
-                const marked = marker.mark(line, scheme.default, scheme);
-                view.updateLine(index, marked);
-            })
-
-        })
+            newContent.length == 1 ? addContent(newContent[0], carrot) : addContent(newContent, carrot);
+        });
+        return;
     }
 
     if (spaceKey) { addContent("\xa0", carrot) } // On space keypress
